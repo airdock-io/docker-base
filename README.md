@@ -6,10 +6,10 @@ This define our base image which rely on debian:jessie.
 
 > Name: airdock/debian
 
-**Dependency**:
- - debian:jessie
+**Dependency**: debian:jessie
 
 **Features**:
+
  - Add curl
  - Add [gosu 1.2](https://github.com/tianon/gosu)
  - Define LANG to en_US.UTF8
@@ -17,6 +17,7 @@ This define our base image which rely on debian:jessie.
 
 
 **Few links**:
+
 - [Debian:jessy source](https://github.com/tianon/docker-brew-debian/tree/b6b91ab925802aff7b832127c278aba23d88d3d1/jessie)
 - [Official Repositories](http://docs.docker.com/docker-hub/official_repos/)
 - [Docker Best practices](http://docs.docker.com/articles/dockerfile_best-practices/)
@@ -45,14 +46,17 @@ This define our base image which rely on debian:jessie.
 # Build
 
 You can build an image from [Dockerfile](https://github.com/airdock-io/docker-base):
+
 - Install "make" utility, and execute: `make build`
 - Or execute: 'docker build -t airdock/base:latest --rm .'
 
 In Makefile, you could retreive this *variables*:
+
 - NAME: declare a full image name (aka airdock/base)
 - VERSION: declare image version
 
 and *tasks*:
+
 - **all**: alias to 'build'
 - **clean**: remove all container which depends on this image, and remove image previously builded
 - **build**: clean and build the current version
