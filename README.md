@@ -20,7 +20,7 @@ This define our base image which rely on debian:jessie.
 - [Debian:jessy source](https://github.com/tianon/docker-brew-debian/tree/b6b91ab925802aff7b832127c278aba23d88d3d1/jessie)
 - [Official Repositories](http://docs.docker.com/docker-hub/official_repos/)
 - [Docker Best practices](http://docs.docker.com/articles/dockerfile_best-practices/)
-- From [Michael Crosby]:
+- From **Michael Crosby**:
 	- [part I](http://crosbymichael.com/dockerfile-best-practices.html)
 	- [part II](http://crosbymichael.com/dockerfile-best-practices-take-2.html)
 
@@ -34,7 +34,7 @@ This define our base image which rely on debian:jessie.
 
 # Change Log
 
-## lastest (current)
+## latest (current)
 
 - base from debian jessie distribution
 - add gosu utility
