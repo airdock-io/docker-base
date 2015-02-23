@@ -10,11 +10,12 @@ This define our base image which rely on debian:jessie.
 
 **Features**:
 
- - Add curl
+ - Add curl (often used ...)
  - Add [gosu 1.2](https://github.com/tianon/gosu)
  - Define LANG to en_US.UTF8
-
-
+ - Apply security update if necessary
+ - Fix some common docker build issue 
+ - Define a root bash friendly for debug use
 
 **Few links**:
 
@@ -40,8 +41,10 @@ This define our base image which rely on debian:jessie.
 - base from debian jessie distribution
 - add gosu utility
 - configure default locale to en_US.UTF8
-- default command to "/bin/bash"
+- default command to "/bin/bash" with initialized shell
+- fix build issue with docker (term dialog, no init.d, add apt-utils)
 - use Expat/MIT license
+- set default working directoty to /root
 
 # Build
 

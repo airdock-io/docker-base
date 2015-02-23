@@ -8,9 +8,22 @@
 FROM debian:jessie
 MAINTAINER Jerome Guibert <jguibert@gmail.com>
 
-# Install curl, locales and gosu 1.2
+USER root
+
+# Never prompts the user for choices on installation/configuration of packages
+ENV DEBIAN_FRONTEND noninteractive
+# No dialog on apt-get update
+ENV TERM linux
+# Work around initramfs-tools running on kernel 'upgrade': <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=594189>
+ENV INITRD No
+
+# Install curl, locales, apt-utils and gosu 1.2
+# create en_US.UTF-8
+# update package
+# add few common alias to root user
 RUN apt-get update -qq && \
-	apt-get install -y curl locales && \
+	apt-get install -y apt-utils curl locales && \
+    apt-get update -y && \
 	apt-get clean  && \
     gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 && \
     curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/1.2/gosu-$(dpkg --print-architecture)" && \
@@ -19,11 +32,17 @@ RUN apt-get update -qq && \
 	rm /usr/local/bin/gosu.asc && \
 	chmod +x /usr/local/bin/gosu && \
 	localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
+    echo "alias ls='ls --color=auto'" >> /root/.bashrc && \
+    echo "alias ll='ls --color=auto -l'" >> /root/.bashrc && \
+    echo "alias l='ls --color=auto -lA'" >> /root/.bashrc && \
     rm -rf /var/lib/apt/lists/* /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 # Define en_US.
 ENV LANG en_US.utf8    
 
+# Define default workdir
+WORKDIR /root
+
 # Define default command.
-CMD [ "/bin/bash"]
+CMD [ "/bin/bash", "-l"]
 
