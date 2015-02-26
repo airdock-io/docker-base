@@ -17,6 +17,9 @@ ENV TERM linux
 # Work around initramfs-tools running on kernel 'upgrade': <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=594189>
 ENV INITRD No
 
+#Aliases
+ADD aliases /root/.aliases
+
 # Install curl, locales, apt-utils and gosu 1.2
 # create en_US.UTF-8
 # update package
@@ -32,13 +35,11 @@ RUN apt-get update -qq && \
 	rm /usr/local/bin/gosu.asc && \
 	chmod +x /usr/local/bin/gosu && \
 	localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
-    echo "alias ls='ls --color=auto'" >> /root/.bashrc && \
-    echo "alias ll='ls --color=auto -l'" >> /root/.bashrc && \
-    echo "alias l='ls --color=auto -lA'" >> /root/.bashrc && \
+    echo "source ~/.aliases" >> /root/.bashrc && \
     rm -rf /var/lib/apt/lists/* /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 # Define en_US.
-ENV LANG en_US.utf8    
+ENV LANG en_US.UTF-8    
 
 # Define default workdir
 WORKDIR /root
