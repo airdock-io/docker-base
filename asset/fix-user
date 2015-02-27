@@ -1,0 +1,17 @@
+#!/bin/bash
+# standard uid/gid
+STD_UID=42
+STG_GID=42
+
+# user name
+USER_NAME=$1
+
+# replace uid/gid of specified user by standardized users
+
+USERLINE=$(cat /etc/passwd | grep $USER_NAME)
+ORIG_UID=$(echo $USERLINE | cut -f3 -d:)
+ORIG_GID=$(echo $USERLINE | cut -f4 -d:)
+ORIG_HOME=$(echo $USERLINE | cut -f6 -d:)
+sed -i -e "s/:$ORIG_UID:$ORIG_GID:/:$STD_UID:$STD_GID:/" /etc/passwd
+sed -i -e "s/$USER_NAME:x:$ORIG_GID:/$USER_NAME:x:$STD_GID:/" /etc/group
+
