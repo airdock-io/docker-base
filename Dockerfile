@@ -17,8 +17,8 @@ ENV TERM linux
 # Work around initramfs-tools running on kernel 'upgrade': <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=594189>
 ENV INITRD No
 
-#Aliases
-ADD aliases /root/.aliases
+#add root asset
+ADD asset/ /root/
 
 # Install curl, locales, apt-utils and gosu 1.2
 # create en_US.UTF-8
@@ -34,6 +34,8 @@ RUN apt-get update -qq && \
 	gpg --verify /usr/local/bin/gosu.asc && \
 	rm /usr/local/bin/gosu.asc && \
 	chmod +x /usr/local/bin/gosu && \
+    chmod +x /root/fix-user && \
+    mv /root/aliases /root/.aliases && \
 	localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
     echo "source ~/.aliases" >> /root/.bashrc && \
     rm -rf /var/lib/apt/lists/* /var/lib/apt/lists/* /tmp/* /var/tmp/* 
