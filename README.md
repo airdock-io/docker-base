@@ -105,8 +105,11 @@ In a container, we can do something like:
 
 After on a host, we can create a dedicated user (uid 42) with specific access on folder to mount with our container. 
 
-
-
+```
+groupadd my-docker-group -g 42
+useradd -u 42 --home /home/my-docker-user --create-home --shell /bin/bash --no-user-group my-docker-user
+usermod -g my-docker-group my-docker-user
+```
 
 # Change Log
 
