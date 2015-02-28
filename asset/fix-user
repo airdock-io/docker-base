@@ -1,10 +1,9 @@
 #!/bin/bash
 # standard uid/gid
-STD_UID=42
-STD_GID=42
-
-# user name
 USER_NAME=$1
+STD_UID=$2
+STD_GID=$3
+
 
 # replace uid/gid of specified user by standardized users
 
@@ -15,3 +14,4 @@ ORIG_HOME=$(echo $USERLINE | cut -f6 -d:)
 sed -i -e "s/:$ORIG_UID:$ORIG_GID:/:$STD_UID:$STD_GID:/" /etc/passwd
 sed -i -e "s/$USER_NAME:x:$ORIG_GID:/$USER_NAME:x:$STD_GID:/" /etc/group
 
+echo "$USER_NAME have now $STD_UID:$STD_GID"
