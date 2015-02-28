@@ -14,8 +14,9 @@ This define our base image which rely on debian:jessie.
  - Add [gosu 1.2](https://github.com/tianon/gosu)
  - Define LANG to en_US.UTF8
  - Apply security update if necessary
- - Fix some common docker build issue
+ - Fix some common docker build issue with apt-get
  - Define a root bash friendly for debug use
+ - Add utility to map new container user with specific uid:gid
 
 **Few links**:
 
@@ -29,10 +30,11 @@ This define our base image which rely on debian:jessie.
 
 # Usage
 
-1. You should have already install [Docker](https://www.docker.com/) and [Fig](http://www.fig.sh/) for more complex usage.
-2. Download [automated build](https://registry.hub.docker.com/u/airdock/) from public [Docker Hub Registry](https://registry.hub.docker.com/):
+You should have already install [Docker](https://www.docker.com/) and [Fig](http://www.fig.sh/) for more complex usage.
+Download [automated build](https://registry.hub.docker.com/u/airdock/) from public [Docker Hub Registry](https://registry.hub.docker.com/):
 `docker search airdock` or go directly in 3.
-3. Execute: 'docker run -t -i  airdock/base:latest'
+
+Execute: 'docker run -t -i  airdock/base:latest'
 
 
 
@@ -148,7 +150,7 @@ So for each image which create a specific user :
 - fix build issue with docker (apt-get usage with term dialog, no init.d, add apt-utils)
 - use Expat/MIT license
 - set default working directory to /root, add few common aliases
-- add fix-user script
+- add fix-user script (utility to map container user to specific uid:gid)
 
 # Build
 
@@ -167,8 +169,8 @@ and *tasks*:
 - **all**: alias to 'build'
 - **clean**: remove all container which depends on this image, and remove image previously builded
 - **build**: clean and build the current version
-- **tag_latest**: build and tag current version with ":latest"
-- **release**: execute tag_latest, push image onto registry, and tag git repository
+- **tag_latest**: tag current version with ":latest"
+- **release**: build and execute tag_latest, push image onto registry, and tag git repository
 - **debug**: launch default command with builded image in interactive mode
 - **run**: run image as daemon and print IP address.
 
