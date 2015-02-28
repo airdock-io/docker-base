@@ -103,9 +103,10 @@ So if we use a standard uid/gid like 42/42 (uid for [dovecot](http://www.dovecot
 
 In a container, we can do something like:
 
+```
   # user uid gid
 	RUN /root/fix-user mylocaluser 42 42
-
+```
 
 And on host, we can create a dedicated user (uid 42) with specific access on folder to mount with our container.
 
