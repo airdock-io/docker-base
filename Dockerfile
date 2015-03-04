@@ -34,7 +34,7 @@ RUN apt-get update -qq && \
 	curl -o /usr/local/bin/gosu.asc -SL "https://github.com/tianon/gosu/releases/download/1.2/gosu-$(dpkg --print-architecture).asc" && \
 	gpg --verify /usr/local/bin/gosu.asc && \
 	rm /usr/local/bin/gosu.asc && \
-	chmod +x /usr/local/bin/gosu /root/fix-user /root/create-user /root/post-install && \
+	chmod +x /usr/local/bin/gosu /root/create-user /root/post-install && \
   mv /root/aliases /root/.aliases && \
 	echo "source ~/.aliases" >> /root/.bashrc && \
 	localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
