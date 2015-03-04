@@ -4,12 +4,12 @@
 #   create-user username uid groupname gid
 #
 USER_NAME=$1
-UID=$2
+USER_UID=$2
 GROUP_NAME=$3
-GID=$4
+GROUP_GID=$4
 
-groupadd $GROUP_NAME -g $GID
-useradd -u $UID --no-create-home --system --no-user-group $USER_NAME
+groupadd $GROUP_NAME -g $GROUP_GID
+useradd -u $USER_UID --no-create-home --system --no-user-group $USER_NAME
 usermod -g $GROUP_NAME $USER_NAME
 
-echo "create user $USER_NAME ($UID) and group $GROUP_NAME ($GID)"
+echo "create user $USER_NAME ($USER_UID) and group $GROUP_NAME ($GROUP_GID)"
