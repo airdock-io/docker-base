@@ -1,5 +1,6 @@
 #!/bin/bash
-# standard uid/gid
+# set standard uid/gid on specified username
+# 
 USER_NAME=$1
 STD_UID=$2
 STD_GID=$3

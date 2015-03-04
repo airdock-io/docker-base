@@ -1,3 +1,20 @@
+# Control ls
 alias ls='ls --color=auto'
 alias ll='ls --color=auto -l'
 alias l='ls --color=auto -lA'
+
+# Create parent directories on demand
+alias mkdir='mkdir -pv'
+
+# Show open ports
+alias port='netstat -tulanp'
+
+# Control firewall (iptables) output
+alias iptlist='/sbin/iptables -L -n -v --line-numbers'
+alias iptlistin='/sbin/iptables -L INPUT -n -v --line-numbers'
+alias iptlistout='/sbin/iptables -L OUTPUT -n -v --line-numbers'
+alias iptlistfw='/sbin/iptables -L FORWARD -n -v --line-numbers'
+
+## set some other defaults
+alias df='df -H'
+alias du='du -ch'
