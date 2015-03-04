@@ -12,11 +12,12 @@ This define our base image which rely on debian:jessie.
 
  - Add curl (often used ...)
  - Add [gosu 1.2](https://github.com/tianon/gosu)
- - Define LANG to en_US.UTF8
+ - Define LANG to en_US.UTF-8
  - Apply security update if necessary
  - Fix some common docker build issue with apt-get
  - Define a root bash friendly for debug use
- - Add utility to map new container user with specific uid:gid
+ - Add utility to map new container user with specific uid:gid, or create them
+ - Add utility to clean up image during docker build
 
 **Few links**:
 
@@ -24,15 +25,15 @@ This define our base image which rely on debian:jessie.
 - [Official Repositories](http://docs.docker.com/docker-hub/official_repos/)
 - [Docker Best practices](http://docs.docker.com/articles/dockerfile_best-practices/)
 - From **Michael Crosby**:
-	- [part I](http://crosbymichael.com/dockerfile-best-practices.html)
-	- [part II](http://crosbymichael.com/dockerfile-best-practices-take-2.html)
+	- [Best practices part I](http://crosbymichael.com/dockerfile-best-practices.html)
+	- [Best practices part II](http://crosbymichael.com/dockerfile-best-practices-take-2.html)
 
 
 # Usage
 
 You should have already install [Docker](https://www.docker.com/) and [Fig](http://www.fig.sh/) for more complex usage.
 Download [automated build](https://registry.hub.docker.com/u/airdock/) from public [Docker Hub Registry](https://registry.hub.docker.com/):
-`docker search airdock` or go directly in 3.
+`docker search airdock`
 
 Execute: 'docker run -t -i  airdock/base:latest'
 
@@ -96,7 +97,8 @@ About UID Ranges, we known that:
 - The system User IDs from 0 to 99 should be statically allocated by the system, and shall not be created by applications.
 - The system User IDs from 100 to 499 should be reserved for dynamic allocation by system administrators and post install scripts using useradd.
 
-Consult [Linux From Scratch Users List](http://www.linuxfromscratch.org/blfs/view/svn/postlfs/users.html) for more information about standard user Id.
+Consult [Linux From Scratch Users List](http://www.linuxfromscratch.org/blfs/view/svn/postlfs/users.html) for more information about standard user Id,
+and [Debian Help](http://www.debianhelp.co.uk/usersid.htm).
 
 
 ### First solution: map all container user in a single host user:group
@@ -149,8 +151,13 @@ So for each image which create a specific user :
 - default command to "/bin/bash" with initialized shell
 - fix build issue with docker (apt-get usage with term dialog, no init.d, add apt-utils)
 - use Expat/MIT license
-- set default working directory to /root, add few common aliases
+- set default working directory to /root,
+- add few common aliases (see [Alias](http://www.cyberciti.biz/tips/bash-aliases-mac-centos-linux-unix.html) for more)
 - add fix-user script (utility to map container user to specific uid:gid)
+- add create-user script (utility to create 'standard user account')
+- add post-install script (utility to clean up image in dockerfile )
+- create all common user account used in airdock images
+- define base of user and group identifier (4200) define in airdock images
 
 # Build
 

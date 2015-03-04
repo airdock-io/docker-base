@@ -22,23 +22,26 @@ ADD asset/ /root/
 
 # Install curl, locales, apt-utils and gosu 1.2
 # create en_US.UTF-8
-# update package
+# update distribution package
 # add few common alias to root user
+# add utilities (create user, post install script)
+# create airdock user list
 RUN apt-get update -qq && \
 	apt-get install -y apt-utils curl locales && \
   apt-get update -y && \
-	apt-get clean  && \
   gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 && \
   curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/1.2/gosu-$(dpkg --print-architecture)" && \
 	curl -o /usr/local/bin/gosu.asc -SL "https://github.com/tianon/gosu/releases/download/1.2/gosu-$(dpkg --print-architecture).asc" && \
 	gpg --verify /usr/local/bin/gosu.asc && \
 	rm /usr/local/bin/gosu.asc && \
-	chmod +x /usr/local/bin/gosu && \
-  chmod +x /root/fix-user && \
+	chmod +x /usr/local/bin/gosu /root/fix-user /root/create-user /root/post-install && \
   mv /root/aliases /root/.aliases && \
 	echo "source ~/.aliases" >> /root/.bashrc && \
 	localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
-  rm -rf /var/lib/apt/lists/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
+	/root/create-user redis 4201 redis 4201  && \
+	/root/create-user elasticsearch 4202 elasticsearch 4202  && \
+	/root/create-user mongodb 4203 mongodb 4203  && \
+	/root/post-install
 
 # Define en_US.
 ENV LANG en_US.UTF-8

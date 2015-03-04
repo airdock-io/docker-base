@@ -1,0 +1,15 @@
+#!/bin/bash
+# create user and group with specific uid/gid
+# usage:
+#   create-user username uid groupname gid
+#
+USER_NAME=$1
+UID=$2
+GROUP_NAME=$3
+GID=$4
+
+groupadd $GROUP_NAME -g $GID
+useradd -u $UID --no-create-home --system --no-user-group $USER_NAME
+usermod -g $GROUP_NAME $USER_NAME
+
+echo "create user $USER_NAME ($UID) and group $GROUP_NAME ($GID)"
