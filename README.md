@@ -16,7 +16,7 @@ This define our base image which rely on debian:jessie.
  - Apply security update if necessary
  - Fix some common docker build issue with apt-get
  - Define a root bash friendly for debug use
- - Add utility to map new container user with specific uid:gid, or create them
+ - Add utility to create new container user with specific uid:gid
  - Add utility to clean up image during docker build
 
 **Few links**:
@@ -108,8 +108,7 @@ So if we use a standard uid/gid like 42/42 (uid for [dovecot](http://www.dovecot
 In a container, we can do something like:
 
 ```
-  # user uid gid
-	RUN /root/fix-user mylocaluser 42 42
+	RUN /root/create-user mylocaluser 42 mylocalgroup 42
 ```
 
 And on host, we can create a dedicated user (uid 42) with specific access on folder to mount with our container.
@@ -140,6 +139,8 @@ So for each image which create a specific user :
 - Add a short notice about user creation and permission in readme.
 
 
+See [Common User List](https://github.com/airdock-io/docker-base/blob/master/CommonUserList.md) for more information.
+
 
 # Change Log
 
@@ -153,7 +154,6 @@ So for each image which create a specific user :
 - use Expat/MIT license
 - set default working directory to /root,
 - add few common aliases (see [Alias](http://www.cyberciti.biz/tips/bash-aliases-mac-centos-linux-unix.html) for more)
-- add fix-user script (utility to map container user to specific uid:gid)
 - add create-user script (utility to create 'standard user account')
 - add post-install script (utility to clean up image in dockerfile )
 - create all common user account used in airdock images

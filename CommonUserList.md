@@ -21,21 +21,30 @@ All of them are ever define in our docker base image.
 
 ### create Guest user and group
 
-You can, in your dockerfile:
+You can, in your dockerfile use script
 
-- use script '/root/fix-user username uid gid ', to update uid and gid of an username
-- user script '/root/create-user username uid  groupname gid ' to create username and groupname with specified id.
+```
+/root/create-user username uid  groupname gid
+``
+
+to create username and groupname with specified id.
 
 
 ### Create Host user and group
 
+You can do:
 
 ```
-  sudo groupadd my-docker-group -g 42
-  sudo useradd -u 42  --no-create-home --system --no-user-group my-docker-user
+  sudo groupadd my-docker-group -g 4201
+  sudo useradd -u 4201  --no-create-home --system --no-user-group my-docker-user
   sudo usermod -g my-docker-group my-docker-user
 ```
 
+or call this script which create all user:
+
+```
+  create-all-user
+```
 
 ### Standard User Define in debian Jessie
 

@@ -1,0 +1,22 @@
+#!/bin/bash
+# create all user
+#
+
+create-user() {
+  USER_NAME=$1
+  USER_UID=$2
+  GROUP_NAME=$3
+  GROUP_GID=$4
+
+  groupadd $GROUP_NAME -g $GROUP_GID
+  useradd -u $USER_UID --no-create-home --system --no-user-group $USER_NAME
+  usermod -g $GROUP_NAME $USER_NAME
+
+  echo "create user $USER_NAME ($USER_UID) and group $GROUP_NAME ($GROUP_GID)"
+}
+
+
+
+create-user redis 4201 redis 4201
+create-user elasticsearch 4202 elasticsearch 4202
+create-user mongodb 4203 mongodb 4203
