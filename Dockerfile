@@ -39,8 +39,9 @@ RUN apt-get update -qq && \
 	echo "source ~/.aliases" >> /root/.bashrc && \
 	localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
 	/root/create-user redis 4201 redis 4201  && \
-	/root/create-user elasticsearch 4202 elasticsearch 4202  && \
-	/root/create-user mongodb 4203 mongodb 4203  && \
+	/root/create-user elasticsearch 4202 elasticsearch 4202 && \
+	/root/create-user mongodb 4203 mongodb 4203 && \
+	/root/create-user rabbitmq 4204 rabbitmq 4204 && \
 	/root/post-install
 
 # Define en_US.

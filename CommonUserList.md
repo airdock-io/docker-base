@@ -15,6 +15,7 @@ All of them are ever define in our docker base image.
 | airdock/mongodb         | mongodb:mongodb                | 4203            | 4203             |
 | airdock/nginx           | www-data:www-data              |  33             |  33              |
 | airdock/apache          | www-data:www-data              |  33             |  33              |
+| airdock/rabbitmq        | rabbitmq:rabbitmq              | 4204            | 4204             |
 |                         |                                |                 |                  |
 
 
