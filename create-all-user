@@ -9,7 +9,7 @@ create-user() {
   GROUP_GID=$4
 
   groupadd $GROUP_NAME -g $GROUP_GID
-  useradd -u $USER_UID --no-create-home --system --no-user-group $USER_NAME
+  useradd -u $USER_UID --home-dir /var/lib/$USER_NAME --create-home --system --no-user-group $USER_NAME
   usermod -g $GROUP_NAME $USER_NAME
 
   echo "create user $USER_NAME ($USER_UID) and group $GROUP_NAME ($GROUP_GID)"

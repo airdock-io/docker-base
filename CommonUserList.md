@@ -19,6 +19,12 @@ All of them are ever define in our docker base image.
 |                         |                                |                 |                  |
 
 
+Our user have their home directory located under "/var/lib" in order to take advantage of:
+
+- most of them are created to share some data
+- this will be consitent between host and guest
+- they act as an application account (not an human account)
+
 
 ### create Guest user and group
 
@@ -37,7 +43,7 @@ You can do:
 
 ```
   sudo groupadd my-docker-group -g 4201
-  sudo useradd -u 4201  --no-create-home --system --no-user-group my-docker-user
+  sudo useradd -u 4201  --home-dir /var/lib/my-docker-user--create-home --system --no-user-group my-docker-user
   sudo usermod -g my-docker-group my-docker-user
 ```
 
