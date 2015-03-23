@@ -42,6 +42,7 @@ RUN apt-get update -qq && \
 	/root/create-user elasticsearch 4202 elasticsearch 4202 && \
 	/root/create-user mongodb 4203 mongodb 4203 && \
 	/root/create-user rabbitmq 4204 rabbitmq 4204 && \
+	/root/create-user java 4205 java 4205 && \
 	/root/post-install
 
 # Define en_US.

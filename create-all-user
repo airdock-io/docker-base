@@ -21,4 +21,5 @@ create-user redis 4201 redis 4201
 create-user elasticsearch 4202 elasticsearch 4202
 create-user mongodb 4203 mongodb 4203
 create-user rabbitmq 4204 rabbitmq 4204
+create-user java 4205 java 4205
 
