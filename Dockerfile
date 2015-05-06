@@ -20,6 +20,10 @@ ENV INITRD No
 #add root asset (aliases and fix user id)
 ADD asset/ /root/
 
+# Define en_US.
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+
 # Install curl, locales, apt-utils and gosu 1.2
 # create en_US.UTF-8
 # update distribution package
@@ -38,15 +42,14 @@ RUN apt-get update -qq && \
   mv /root/aliases /root/.aliases && \
 	echo "source ~/.aliases" >> /root/.bashrc && \
 	localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
+	update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 && \
 	/root/create-user redis 4201 redis 4201  && \
 	/root/create-user elasticsearch 4202 elasticsearch 4202 && \
 	/root/create-user mongodb 4203 mongodb 4203 && \
 	/root/create-user rabbitmq 4204 rabbitmq 4204 && \
 	/root/create-user java 4205 java 4205 && \
+	/root/create-user py 4206 py 4206 && \
 	/root/post-install
-
-# Define en_US.
-ENV LANG en_US.UTF-8
 
 # Define default workdir
 WORKDIR /root
