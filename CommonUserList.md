@@ -15,27 +15,44 @@ All of them are ever define in our docker base image.
 | airdock/mongodb         | mongodb:mongodb                | 4203            | 4203             |
 | airdock/nginx           | www-data:www-data              |  33             |  33              |
 | airdock/apache          | www-data:www-data              |  33             |  33              |
+| airdock/rabbitmq        | rabbitmq:rabbitmq              | 4204            | 4204             |
+| airdock/oracle-jdk      | java:java                      | 4205            | 4205             |
 |                         |                                |                 |                  |
 
+
+Our user have their home directory located under "/var/lib" in order to take advantage of:
+
+- most of them are created to share some data
+- this will be consitent between host and guest
+- they act as an application account (not an human account)
 
 
 ### create Guest user and group
 
-You can, in your dockerfile:
+You can, in your dockerfile use script
 
-- use script '/root/fix-user username uid gid ', to update uid and gid of an username
-- user script '/root/create-user username uid  groupname gid ' to create username and groupname with specified id.
+```
+/root/create-user username uid  groupname gid
+``
+
+to create username and groupname with specified id.
 
 
 ### Create Host user and group
 
+You can do:
 
 ```
-  sudo groupadd my-docker-group -g 42
-  sudo useradd -u 42  --no-create-home --system --no-user-group my-docker-user
+  sudo groupadd my-docker-group -g 4201
+  sudo useradd -u 4201  --home-dir /var/lib/my-docker-user--create-home --system --no-user-group my-docker-user
   sudo usermod -g my-docker-group my-docker-user
 ```
 
+or call this script which create all user:
+
+```
+  create-all-user
+```
 
 ### Standard User Define in debian Jessie
 
