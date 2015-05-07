@@ -17,6 +17,7 @@ All of them are ever define in our docker base image.
 | airdock/apache          | www-data:www-data              |  33             |  33              |
 | airdock/rabbitmq        | rabbitmq:rabbitmq              | 4204            | 4204             |
 | airdock/oracle-jdk      | java:java                      | 4205            | 4205             |
+| airdock/python          | py:py                          | 4206            | 4206             |
 |                         |                                |                 |                  |
 
 
