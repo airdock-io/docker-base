@@ -148,7 +148,7 @@ See [Common User List](https://github.com/airdock-io/docker-base/blob/master/Com
 
 - use debian jessie distribution as our default system
 - add gosu utility
-- configure default locale to en_US.UTF-8
+- configure default locale to en_US.UTF-8, set LC_ALL and LANG variable
 - default command to "/bin/bash" with initialized shell
 - fix build issue with docker (apt-get usage with term dialog, no init.d, add apt-utils)
 - use Expat/MIT license
