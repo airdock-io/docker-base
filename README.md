@@ -9,13 +9,13 @@ This project define our base image which rely on debian:jessie.
 **Features**:
 
  - Add curl (often used ...)
- - Add [gosu 1.2](https://github.com/tianon/gosu)
+ - Add [gosu 1.4](https://github.com/tianon/gosu)
  - Define LANG to en_US.UTF-8
  - Apply security update if necessary
  - Fix some common docker build issue with apt-get
  - Define a root bash friendly for debug use
- - Add utility to create new container user with specific uid:gid
- - Add utility to clean up image during docker build
+ - Add utility to create new container user with specific uid:gid (script '/root/create-user')
+ - Add utility to clean up image during docker build (script '/root/post-install')
 
 
 # Usage
@@ -50,13 +50,14 @@ And little more, if you want to create your own docker images:
 - configure default locale to en_US.UTF-8, set LC_ALL and LANG variable
 - default command to "/bin/bash" with initialized shell
 - fix build issue with docker (apt-get usage with term dialog, no init.d, add apt-utils)
-- use Expat/MIT license
+- use MIT license
 - set default working directory to /root,
 - add few common aliases (see [Alias](http://www.cyberciti.biz/tips/bash-aliases-mac-centos-linux-unix.html) for more)
 - add create-user script (utility to create 'standard user account')
 - add post-install script (utility to clean up image in dockerfile )
 - create all common user account used in airdock images
 - define base of user and group identifier (4200) define in airdock images
+- define '/srv/{user}' as data folder for application user with links on '/var/lib/{user}' for backward compatibility.
 
 # Build
 

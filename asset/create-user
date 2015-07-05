@@ -9,7 +9,9 @@ GROUP_NAME=$3
 GROUP_GID=$4
 
 groupadd $GROUP_NAME -g $GROUP_GID
-useradd -u $USER_UID --home-dir /var/lib/$USER_NAME --create-home --system --no-user-group $USER_NAME
+useradd -u $USER_UID --home-dir /srv/$USER_NAME --create-home --system --no-user-group $USER_NAME
 usermod -g $GROUP_NAME $USER_NAME
+ln -s /srv/$USER_NAME /var/lib/$USER_NAME
+chown -R $USER_NAME:$GROUP_NAME /var/lib/$USER_NAME
 
-echo "create user $USER_NAME ($USER_UID) and group $GROUP_NAME ($GROUP_GID)"
+echo "create user $USER_NAME ($USER_UID) and group $GROUP_NAME ($GROUP_GID), Home /srv/$USER_NAME (/var/lib/$USER_NAME for backward compatibility)."
