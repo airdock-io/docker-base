@@ -2,7 +2,7 @@
 
 This project define our base image which rely on debian:jessie.
 
-> Name: airdock/debian
+> Name: airdock/base
 
 **Dependency**: debian:jessie
 
@@ -16,7 +16,7 @@ This project define our base image which rely on debian:jessie.
  - Define a root bash friendly for debug use
  - Add utility to create new container user with specific uid:gid (script '/root/create-user')
  - Add utility to clean up image during docker build (script '/root/post-install')
- - Following [FHS](http://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf) standard. 
+ - Following [FHS](http://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf) standard.
 
 # Usage
 
