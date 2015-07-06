@@ -36,12 +36,12 @@ ENV LC_ALL  en_US.UTF-8
 # create airdock user list
 RUN apt-get update -qq && \
   apt-get install -y apt-utils curl locales && \
-  localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
+  sed -i 's/^# en_US.UTF-8 UTF-8$/en_US.UTF-8 UTF-8/g' /etc/locale.gen && locale-gen && \
   update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 && \
   apt-get update -y && \
   gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 && \
-  curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/1.2/gosu-$(dpkg --print-architecture)" && \
-  curl -o /usr/local/bin/gosu.asc -SL "https://github.com/tianon/gosu/releases/download/1.2/gosu-$(dpkg --print-architecture).asc" && \
+  curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/1.4/gosu-$(dpkg --print-architecture)" && \
+  curl -o /usr/local/bin/gosu.asc -SL "https://github.com/tianon/gosu/releases/download/1.4/gosu-$(dpkg --print-architecture).asc" && \
   gpg --verify /usr/local/bin/gosu.asc && \
   rm /usr/local/bin/gosu.asc && \
   chmod +x /usr/local/bin/gosu /root/create-user /root/post-install && \
