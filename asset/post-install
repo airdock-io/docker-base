@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 # perform a clean up at end of install (build with dockerfile)
 #
 
-apt-get clean
+apk del --purge
 rm -rf /var/lib/apt/lists/* /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/*

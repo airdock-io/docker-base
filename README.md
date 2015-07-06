@@ -1,28 +1,27 @@
 # docker-base
 
-This project define our base image which rely on debian:jessie.
+This project define our base image which rely on [alpine](https://github.com/gliderlabs/docker-alpine).
 
-> Name: airdock/debian
+Alpine Linux is an independent, non-commercial, general purpose Linux distribution designed for power users who appreciate security, simplicity and resource efficiency.
 
-**Dependency**: debian:jessie
+> Name: airdock/base:alpine
+
+**Dependency**: alpine:3.2
 
 **Features**:
 
  - Add curl (often used ...)
  - Add [gosu 1.4](https://github.com/tianon/gosu)
- - Define LANG to en_US.UTF-8
- - Apply security update if necessary
- - Fix some common docker build issue with apt-get
- - Define a root bash friendly for debug use
+ - Define LANG, LC_CTYPE to en_US.UTF-8
  - Add utility to create new container user with specific uid:gid (script '/root/create-user')
  - Add utility to clean up image during docker build (script '/root/post-install')
- - Following [FHS](http://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf) standard. 
+ - Following [FHS](http://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf) standard.
 
 # Usage
 
 You should have already install [Docker](https://www.docker.com/).
 
-Execute: 'docker run -t -i  airdock/base:latest'
+Execute: 'docker run -t -i  airdock/base:alpine'
 
 # Reading
 
@@ -32,7 +31,7 @@ We recommend to you spending time to read few documentation on [wiki](https://gi
 
 And little more, if you want to create your own docker images:
 
-- [Debian:jessy source](https://github.com/tianon/docker-brew-debian/tree/b6b91ab925802aff7b832127c278aba23d88d3d1/jessie)
+- [Alpine Linux]](http://alpinelinux.org/)
 - [Official Repositories](http://docs.docker.com/docker-hub/official_repos/)
 - [Docker Best practices](http://docs.docker.com/articles/dockerfile_best-practices/)
 - From **Michael Crosby**:
@@ -45,14 +44,10 @@ And little more, if you want to create your own docker images:
 
 ## latest (current)
 
-- use debian jessie distribution as our default system
+- use ALpine Linux distribution as our default system
 - add gosu utility
 - configure default locale to en_US.UTF-8, set LC_ALL and LANG variable
-- default command to "/bin/bash" with initialized shell
-- fix build issue with docker (apt-get usage with term dialog, no init.d, add apt-utils)
 - use MIT license
-- set default working directory to /root,
-- add few common aliases (see [Alias](http://www.cyberciti.biz/tips/bash-aliases-mac-centos-linux-unix.html) for more)
 - add create-user script (utility to create 'standard user account')
 - add post-install script (utility to clean up image in dockerfile )
 - create all common user account used in airdock images
