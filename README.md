@@ -57,7 +57,7 @@ And little more, if you want to create your own docker images:
 # Build
 
 - Install "make" utility, and execute: `make build`
-- Or execute: 'docker build -t airdock/base:latest --rm .'
+- Or execute: 'docker build -t airdock/base:alpine --rm .'
 
 See [Docker Project Tree](https://github.com/airdock-io/docker-base/wiki/Docker-Project-Tree) for more details.
 
