@@ -53,6 +53,7 @@ RUN apt-get update -qq && \
   /root/create-user rabbitmq 4204 rabbitmq 4204 && \
   /root/create-user java 4205 java 4205 && \
   /root/create-user py 4206 py 4206 && \
+  /root/create-user node 4207 node 4207 && \
   /root/post-install
 
 # Define default workdir
