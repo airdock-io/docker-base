@@ -18,7 +18,7 @@ ENV TERM linux
 ENV INITRD No
 
 #add root asset (aliases and fix user id)
-ADD asset/ /root/
+ADD asset/* /root/
 
 # Define en_US.
 ENV LANGUAGE en_US.UTF-8
