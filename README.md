@@ -1,5 +1,4 @@
-[![](https://badge.imagelayers.io/airdock/base:latest.svg)](https://imagelayers.io/?images=airdock/base:latest 'Get your own badge on imagelayers.io')
-# docker-base
+# docker-base [![](https://badge.imagelayers.io/airdock/base:latest.svg)](https://imagelayers.io/?images=airdock/base:latest 'Get your own badge on imagelayers.io')
 
 This project define our base image which rely on debian:jessie.
 
