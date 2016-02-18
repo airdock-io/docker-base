@@ -28,7 +28,7 @@ ENV LC_CTYPE en_US.UTF-8
 ENV LC_MESSAGES en_US.UTF-8
 ENV LC_ALL  en_US.UTF-8
 
-# Install curl, locales, apt-utils and gosu 1.2
+# Install curl, locales, apt-utils and gosu
 # create en_US.UTF-8
 # update distribution package
 # add few common alias to root user
@@ -40,11 +40,11 @@ RUN apt-get update -qq && \
   update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 && \
   apt-get update -y && \
   gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 && \
-  curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/1.4/gosu-$(dpkg --print-architecture)" && \
-  curl -o /usr/local/bin/gosu.asc -SL "https://github.com/tianon/gosu/releases/download/1.4/gosu-$(dpkg --print-architecture).asc" && \
+  curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" && \
+  curl -o /usr/local/bin/gosu.asc -SL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture).asc" && \
   gpg --verify /usr/local/bin/gosu.asc && \
   rm /usr/local/bin/gosu.asc && \
-  chmod +x /usr/local/bin/gosu /root/create-user /root/post-install && \
+  chmod +x /usr/local/bin/gosu && \
   mv /root/aliases /root/.aliases && \
   echo "source ~/.aliases" >> /root/.bashrc && \
   /root/create-user redis 4201 redis 4201  && \
