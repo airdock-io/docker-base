@@ -1,4 +1,4 @@
-# docker-base
+# docker-base [![](https://badge.imagelayers.io/airdock/base:latest.svg)](https://imagelayers.io/?images=airdock/base:latest 'Get your own badge on imagelayers.io')
 
 This project define our base image which rely on debian:jessie.
 
@@ -9,7 +9,7 @@ This project define our base image which rely on debian:jessie.
 **Features**:
 
  - Add curl (often used ...)
- - Add [gosu 1.4](https://github.com/tianon/gosu)
+ - Add [gosu](https://github.com/tianon/gosu)
  - Define LANG to en_US.UTF-8
  - Apply security update if necessary
  - Fix some common docker build issue with apt-get
@@ -43,10 +43,14 @@ And little more, if you want to create your own docker images:
 
 # Change Log
 
-## latest (current)
+## 2016/12/18
+
+- update gosu utility 1.9
+
+## before
 
 - use debian jessie distribution as our default system
-- add gosu utility
+- add gosu utility (1.7)
 - configure default locale to en_US.UTF-8, set LC_ALL and LANG variable
 - default command to "/bin/bash" with initialized shell
 - fix build issue with docker (apt-get usage with term dialog, no init.d, add apt-utils)
