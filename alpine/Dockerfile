@@ -4,7 +4,7 @@
 # TO_BUILD:       docker build --rm -t airdock/base .
 # SOURCE:         https://github.com/airdock/docker-base
 
-FROM gliderlabs/alpine:3.2
+FROM gliderlabs/alpine:latest
 MAINTAINER Jerome Guibert <jguibert@gmail.com>
 
 #add root asset
