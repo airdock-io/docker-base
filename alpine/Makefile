@@ -1,5 +1,5 @@
 NAME = airdock/base
-VERSION = jessie
+VERSION = alpine
 
 .PHONY: all clean build tag_latest release debug run
 
