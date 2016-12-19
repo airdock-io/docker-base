@@ -10,4 +10,4 @@
 ./asset/create-user java 4205 java 4205
 ./asset/create-user py 4206 py 4206
 ./asset/create-user node 4207 node 4207
-./asset/create-user docker 4242 node 4242
+./asset/create-user docker 4242 docker 4242
