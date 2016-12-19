@@ -43,7 +43,11 @@ And little more, if you want to create your own docker images:
 
 # Change Log
 
-## latest (current)
+## 2016/12/18
+
+- update gosu utility 1.9
+
+## before
 
 - use debian jessie distribution as our default system
 - add gosu utility (1.7)
