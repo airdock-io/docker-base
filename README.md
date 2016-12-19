@@ -17,6 +17,7 @@ This project define our base image which rely on debian:jessie.
  - Add utility to create new container user with specific uid:gid (script '/root/create-user')
  - Add utility to clean up image during docker build (script '/root/post-install')
  - Following [FHS](http://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf) standard.
+ - Define standard application user (with gosu, you have all to run docker container with a user other than root)
 
 # Usage
 
@@ -46,6 +47,7 @@ And little more, if you want to create your own docker images:
 ## 2016/12/18
 
 - update gosu utility 1.9
+- add 'docker' user (4242:4242)
 
 ## before
 

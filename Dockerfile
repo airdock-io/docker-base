@@ -62,6 +62,7 @@ RUN set -x && \
   /root/create-user java 4205 java 4205 && \
   /root/create-user py 4206 py 4206 && \
   /root/create-user node 4207 node 4207 && \
+  /root/create-user docker 4242 docker 4242 && \
   /root/post-install
 
 # Define default workdir
