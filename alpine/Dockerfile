@@ -7,7 +7,9 @@
 FROM gliderlabs/alpine:latest
 MAINTAINER Jerome Guibert <jguibert@gmail.com>
 
-#add root asset
+# Install su-exec and tini
+# add utilities (create user, post install script)
+# create airdock user list
 ADD asset/ /root/
 ENV LANG en_US.UTF-8
 ENV LC_CTYPE en_US.UTF-8

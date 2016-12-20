@@ -37,13 +37,6 @@ ENV TINI_VERSION v0.13.2
 # add few common alias to root user
 # add utilities (create user, post install script)
 # create airdock user list
-
-
-ADD  /tini
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini.asc /tini.asc
-RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys 595E85A6B1B4779EA4DAAEC70B588DFF0527A9B7 \
- && gpg --verify /tini.asc
-
 RUN set -x && \
   apt-get update -qq && \
   apt-get install -y apt-utils curl locales && \
