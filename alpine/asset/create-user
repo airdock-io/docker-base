@@ -1,18 +1,11 @@
 #!/bin/sh
-# create user and group with specific uid/gid
-# usage:
 #   create-user username uid groupname gid
-#
 USER_NAME=$1
 USER_UID=$2
 GROUP_NAME=$3
 GROUP_GID=$4
-
-# user adduser addgroup
 addgroup -g $GROUP_GID -S $GROUP_NAME
 adduser -u $USER_UID -h /srv/$USER_NAME -D -S -G $GROUP_NAME -s /bin/sh -g $USER_NAME $USER_NAME
-
 ln -s /srv/$USER_NAME /var/lib/$USER_NAME
 chown -R $USER_NAME:$GROUP_NAME /var/lib/$USER_NAME
-
 echo "create user $USER_NAME ($USER_UID) and group $GROUP_NAME ($GROUP_GID), Home /srv/$USER_NAME (/var/lib/$USER_NAME for backward compatibility)."

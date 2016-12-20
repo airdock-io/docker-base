@@ -1,4 +1,3 @@
 #!/bin/sh
-# perform a clean up at end of install (build with dockerfile)
 apk del --purge
 rm -rf /tmp/* /var/tmp/* /var/cache/*
