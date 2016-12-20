@@ -5,8 +5,8 @@ This project define our base image which rely on debian:jessie or gliderlabs/alp
 > Name: airdock/base
 
 **Tags**:
- - latest, jessie: based on debian jessie [![](https://badge.imagelayers.io/airdock/base:latest.svg)](https://imagelayers.io/?images=airdock/base:latest 'Get your own badge on imagelayers.io')
- - alpine: based on gliderlabs/alpine [![](https://badge.imagelayers.io/airdock/base:alpine.svg)](https://imagelayers.io/?images=airdock/base:alpine 'Get your own badge on imagelayers.io')
+ - latest, jessie: based on debian jessie [![](https://images.microbadger.com/badges/image/airdock/base:jessie.svg)](https://microbadger.com/images/airdock/base:jessie "Get your own version badge on microbadger.com")
+ - alpine: based on gliderlabs/alpine [![](https://images.microbadger.com/badges/image/airdock/base:alpine.svg)](https://microbadger.com/images/airdock/base:alpine "Get your own image badge on microbadger.com")
 
 
 ## Features
