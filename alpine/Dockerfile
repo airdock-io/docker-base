@@ -12,7 +12,7 @@ ADD asset/ /root/
 ENV LANG en_US.UTF-8
 ENV LC_CTYPE en_US.UTF-8
 RUN set -x && \
-  apk --no-cache add su-exec && \
+  apk --no-cache add su-exec tini && \
   chmod +x /root/create-user /root/post-install; sync && \
   mkdir /srv && \
   /root/create-user redis 4201 redis 4201  && \
