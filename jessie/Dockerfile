@@ -54,7 +54,7 @@ RUN set -x && \
   chmod +x /usr/local/bin/gosu  && \
   gosu nobody true  && \
   wget -O /usr/local/bin/tini "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini" && \
-  wget -0 /usr/local/bin/tini.asc "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini.asc" && \
+  wget -O /usr/local/bin/tini.asc "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini.asc" && \
   gpg --keyserver ha.pool.sks-keyservers.net --recv-keys 595E85A6B1B4779EA4DAAEC70B588DFF0527A9B7 && \
   gpg --batch --verify /usr/local/bin/tini.asc /usr/local/bin/tini  && \
   rm -r "$GNUPGHOME" /usr/local/bin/tini.asc  && \
