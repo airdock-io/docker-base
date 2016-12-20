@@ -14,7 +14,7 @@ ENV LC_CTYPE en_US.UTF-8
 RUN set -x && \
   apk --no-cache add su-exec tini && \
   chmod +x /root/create-user /root/post-install; sync && \
-  mkdir /srv && \
+  mkdir -p /srv && \
   /root/create-user redis 4201 redis 4201  && \
   /root/create-user elasticsearch 4202 elasticsearch 4202 && \
   /root/create-user mongodb 4203 mongodb 4203 && \
