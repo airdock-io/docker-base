@@ -1,23 +1,39 @@
 # docker-base [![](https://badge.imagelayers.io/airdock/base:latest.svg)](https://imagelayers.io/?images=airdock/base:latest 'Get your own badge on imagelayers.io')
 
-This project define our base image which rely on debian:jessie.
+This project define our base image which rely on debian:jessie or gliderlabs/alpine
 
 > Name: airdock/base
 
-**Dependency**: debian:jessie
+**Tags**:
+ - latest, jessie: based on debian jessie
+ - alpine: based on gliderlabs/alpine
 
-**Features**:
+
+## Features
+
+### Common Features
+
+ - Add [gosu](https://github.com/tianon/gosu) Jessie or [su-exec)(https://github.com/ncopa/su-exec) Alpine
+ - add [tini](https://github.com/krallin/tini)
+ - Add utility to create new container user with specific uid:gid (script '/root/create-user')
+ - Following [FHS](http://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf) standard.
+ - Add utility to clean up image during docker build (script '/root/post-install')
+ - Define standard application user (with gosu/su-exec, you have all to run docker container with a user other than root)
+ - Define LANG to en_US.UTF-8
+
+### Debian Jessie
+
+Under 'jessie' folder you could retreive:
 
  - Add curl (often used ...)
- - Add [gosu](https://github.com/tianon/gosu)
- - Define LANG to en_US.UTF-8
  - Apply security update if necessary
  - Fix some common docker build issue with apt-get
  - Define a root bash friendly for debug use
- - Add utility to create new container user with specific uid:gid (script '/root/create-user')
- - Add utility to clean up image during docker build (script '/root/post-install')
- - Following [FHS](http://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf) standard.
- - Define standard application user (with gosu, you have all to run docker container with a user other than root)
+
+### Alpine
+
+Under 'alpine' folder you could retreive common features. Did you say 'lightweight' ? ...
+
 
 # Usage
 
@@ -34,6 +50,7 @@ We recommend to you spending time to read few documentation on [wiki](https://gi
 And little more, if you want to create your own docker images:
 
 - [Debian:jessy source](https://github.com/tianon/docker-brew-debian/tree/b6b91ab925802aff7b832127c278aba23d88d3d1/jessie)
+- [Docker Alpine](https://github.com/gliderlabs/docker-alpine)
 - [Official Repositories](http://docs.docker.com/docker-hub/official_repos/)
 - [Docker Best practices](http://docs.docker.com/articles/dockerfile_best-practices/)
 - From **Michael Crosby**:
@@ -43,6 +60,11 @@ And little more, if you want to create your own docker images:
 
 
 # Change Log
+
+## 2016/?/?
+- start base alpine
+- integrate jessie and alpine as base image
+- add tini process managment
 
 ## 2016/12/18
 
