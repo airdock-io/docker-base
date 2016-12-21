@@ -13,7 +13,7 @@ This project define our base image which rely on debian:jessie or gliderlabs/alp
 
 ### Common Features
 
- - Add [gosu](https://github.com/tianon/gosu) Jessie or [su-exec)(https://github.com/ncopa/su-exec) Alpine
+ - Add [gosu](https://github.com/tianon/gosu) Jessie or [su-exec](https://github.com/ncopa/su-exec) Alpine
  - add [tini](https://github.com/krallin/tini)
  - Add utility to create new container user with specific uid:gid (script '/root/create-user')
  - Following [FHS](http://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf) standard.
