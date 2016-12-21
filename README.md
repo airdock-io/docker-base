@@ -61,8 +61,8 @@ And little more, if you want to create your own docker images:
 
 # Change Log
 
-## 2016/?/?
-- start base alpine
+## 2016/12/21
+- introduce base from alpine
 - integrate jessie and alpine as base image
 - add tini process managment
 
