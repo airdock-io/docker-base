@@ -1,0 +1,3 @@
+#!/bin/sh
+apk del --purge
+rm -rf /tmp/* /var/tmp/* /var/cache/*

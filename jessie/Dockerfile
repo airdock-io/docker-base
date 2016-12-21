@@ -29,8 +29,9 @@ ENV LC_MESSAGES en_US.UTF-8
 ENV LC_ALL  en_US.UTF-8
 
 ENV GOSU_VERSION 1.9
+ENV TINI_VERSION v0.13.2
 
-# Install curl, locales, apt-utils and gosu
+# Install curl, locales, apt-utils, gosu and tini
 # create en_US.UTF-8
 # update distribution package
 # add few common alias to root user
@@ -49,9 +50,15 @@ RUN set -x && \
   export GNUPGHOME="$(mktemp -d)"  && \
   gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4  && \
   gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu  && \
-  rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc  && \
+  rm -r /usr/local/bin/gosu.asc  && \
   chmod +x /usr/local/bin/gosu  && \
   gosu nobody true  && \
+  wget -O /usr/local/bin/tini "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini" && \
+  wget -O /usr/local/bin/tini.asc "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini.asc" && \
+  gpg --keyserver ha.pool.sks-keyservers.net --recv-keys 595E85A6B1B4779EA4DAAEC70B588DFF0527A9B7 && \
+  gpg --batch --verify /usr/local/bin/tini.asc /usr/local/bin/tini  && \
+  rm -r "$GNUPGHOME" /usr/local/bin/tini.asc  && \
+  chmod +x /usr/local/bin/tini  && \
   apt-get purge -y --auto-remove ca-certificates wget  && \
   mv /root/aliases /root/.aliases && \
   echo "source ~/.aliases" >> /root/.bashrc && \
