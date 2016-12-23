@@ -11,8 +11,9 @@ MAINTAINER Jerome Guibert <jguibert@gmail.com>
 # add utilities (create user, post install script)
 # create airdock user list
 ADD asset/ /root/
-ENV LANG en_US.UTF-8
-ENV LC_CTYPE en_US.UTF-8
+ENV LANG=en_US.UTF-8 \
+    LC_CTYPE=en_US.UTF-8
+
 RUN set -x && \
   apk --no-cache add su-exec tini && apk --no-cache upgrade && \
   chmod +x /root/create-user /root/post-install; sync && \

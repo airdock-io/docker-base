@@ -11,25 +11,27 @@ MAINTAINER Jerome Guibert <jguibert@gmail.com>
 USER root
 
 # Never prompts the user for choices on installation/configuration of packages
-ENV DEBIAN_FRONTEND noninteractive
 # No dialog on apt-get update
-ENV TERM linux
 # Work around initramfs-tools running on kernel 'upgrade': <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=594189>
-ENV INITRD No
+# Define en_US.
+
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    TERM=linux \
+    INITRD=No \
+    LANGUAGE=en_US.UTF-8 \
+    LANG=en_US.UTF-8  \
+    LC_ALL=en_US.UTF-8 \
+    LC_CTYPE=en_US.UTF-8 \
+    LC_MESSAGES=en_US.UTF-8 \
+    LC_ALL=en_US.UTF-8 \
+    GOSU_VERSION=1.9 \
+    TINI_VERSION=v0.13.2
+
 
 #add root asset (aliases and fix user id)
 ADD asset/* /root/
 
-# Define en_US.
-ENV LANGUAGE en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
-ENV LC_CTYPE en_US.UTF-8
-ENV LC_MESSAGES en_US.UTF-8
-ENV LC_ALL  en_US.UTF-8
-
-ENV GOSU_VERSION 1.9
-ENV TINI_VERSION v0.13.2
 
 # Install curl, locales, apt-utils, gosu and tini
 # create en_US.UTF-8

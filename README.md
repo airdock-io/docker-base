@@ -61,6 +61,9 @@ And little more, if you want to create your own docker images:
 
 # Change Log
 
+## 2016/12/23
+- minimize layer count (optimize ENV declaration)
+
 ## 2016/12/21
 - introduce base from alpine
 - integrate jessie and alpine as base image
