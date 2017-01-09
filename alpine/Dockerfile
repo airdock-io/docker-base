@@ -26,7 +26,7 @@ RUN set -x && \
   /root/create-user py 4206 py 4206 && \
   /root/create-user node 4207 node 4207 && \
   /root/create-user docker 4242 docker 4242 && \
-  /root/post-install
+  /root/post-install && rm /usr/bin/tini
 
 # Define default command.
 CMD [ "/bin/sh"]
