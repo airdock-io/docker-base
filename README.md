@@ -1,12 +1,11 @@
 # docker-base
 
-This project define our base image which rely on debian:jessie or gliderlabs/alpine
+This project define our base image which rely on debian:jessie
 
 > Name: airdock/base
 
 **Tags**:
  - latest, jessie: based on debian jessie [![](https://images.microbadger.com/badges/image/airdock/base:jessie.svg)](https://microbadger.com/images/airdock/base:jessie "Get your own version badge on microbadger.com")
- - alpine: based on gliderlabs/alpine [![](https://images.microbadger.com/badges/image/airdock/base:alpine.svg)](https://microbadger.com/images/airdock/base:alpine "Get your own image badge on microbadger.com")
 
 
 ## Features
@@ -15,7 +14,8 @@ This project define our base image which rely on debian:jessie or gliderlabs/alp
 
  - Add [gosu](https://github.com/tianon/gosu) Jessie or [su-exec](https://github.com/ncopa/su-exec) Alpine
  - add [tini](https://github.com/krallin/tini)
- - Add utility to create new container user with specific uid:gid (script '/root/create-user')
+ - Add utility to create new container user with specific uid:gid (script '/root/create-user').
+   Note that since few year, se commonly use user 1000:1000 inside container.
  - Following [FHS](http://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf) standard.
  - Add utility to clean up image during docker build (script '/root/post-install')
  - Define standard application user (with gosu/su-exec, you have all to run docker container with a user other than root)
@@ -29,11 +29,6 @@ Under 'jessie' folder you could retreive:
  - Apply security update if necessary
  - Fix some common docker build issue with apt-get
  - Define a root bash friendly for debug use
-
-### Alpine
-
-Under 'alpine' folder you could retreive common features. Did you say 'lightweight' ? ...
- - upgrade all package (6.315M / 4.857M)
 
 # Usage
 
@@ -50,7 +45,6 @@ We recommend to you spending time to read few documentation on [wiki](https://gi
 And little more, if you want to create your own docker images:
 
 - [Debian:jessy source](https://github.com/tianon/docker-brew-debian/tree/b6b91ab925802aff7b832127c278aba23d88d3d1/jessie)
-- [Docker Alpine](https://github.com/gliderlabs/docker-alpine)
 - [Official Repositories](http://docs.docker.com/docker-hub/official_repos/)
 - [Docker Best practices](http://docs.docker.com/articles/dockerfile_best-practices/)
 - From **Michael Crosby**:
@@ -60,6 +54,12 @@ And little more, if you want to create your own docker images:
 
 
 # Change Log
+
+## 2020/11/21
+
+- update tiny and gosu
+- remove alpine (stay focus on debian)
+- mark this project as obsolete
 
 ## 2016/12/23
 - minimize layer count (optimize ENV declaration)
