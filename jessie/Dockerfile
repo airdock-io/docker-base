@@ -6,7 +6,7 @@
 
 # Pull base image.
 FROM debian:jessie
-LABEL maintainer="Jerome Guibert <jguibert@gmail.com>""
+LABEL maintainer="Jerome Guibert <jguibert@gmail.com>"
 
 USER root
 
