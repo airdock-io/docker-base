@@ -2,7 +2,7 @@
 # create all user
 #
 
-
+./asset/create-user john 1000 doe 1000
 ./asset/create-user redis 4201 redis 4201
 ./asset/create-user elasticsearch 4202 elasticsearch 4202
 ./asset/create-user mongodb 4203 mongodb 4203

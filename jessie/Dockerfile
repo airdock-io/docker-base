@@ -6,7 +6,7 @@
 
 # Pull base image.
 FROM debian:jessie
-MAINTAINER Jerome Guibert <jguibert@gmail.com>
+LABEL maintainer="Jerome Guibert <jguibert@gmail.com>""
 
 USER root
 
@@ -25,8 +25,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
     LC_CTYPE=en_US.UTF-8 \
     LC_MESSAGES=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8 \
-    GOSU_VERSION=1.9 \
-    TINI_VERSION=v0.13.2
+    GOSU_VERSION=1.12 \
+    TINI_VERSION=v0.19.0
 
 
 #add root asset (aliases and fix user id)
@@ -55,8 +55,8 @@ RUN set -x && \
   rm -r /usr/local/bin/gosu.asc  && \
   chmod +x /usr/local/bin/gosu  && \
   gosu nobody true  && \
-  wget -O /usr/local/bin/tini "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini" && \
-  wget -O /usr/local/bin/tini.asc "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini.asc" && \
+  wget -O /usr/local/bin/tini "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-$dpkgArch" && \
+  wget -O /usr/local/bin/tini.asc "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-$dpkgArch.asc" && \
   gpg --keyserver ha.pool.sks-keyservers.net --recv-keys 595E85A6B1B4779EA4DAAEC70B588DFF0527A9B7 && \
   gpg --batch --verify /usr/local/bin/tini.asc /usr/local/bin/tini  && \
   rm -r "$GNUPGHOME" /usr/local/bin/tini.asc  && \
@@ -64,6 +64,7 @@ RUN set -x && \
   apt-get purge -y --auto-remove ca-certificates wget  && \
   mv /root/aliases /root/.aliases && \
   echo "source ~/.aliases" >> /root/.bashrc && \
+  ./asset/create-user john 1000 doe 1000 && \
   /root/create-user redis 4201 redis 4201  && \
   /root/create-user elasticsearch 4202 elasticsearch 4202 && \
   /root/create-user mongodb 4203 mongodb 4203 && \
