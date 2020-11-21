@@ -64,7 +64,7 @@ RUN set -x && \
   apt-get purge -y --auto-remove ca-certificates wget  && \
   mv /root/aliases /root/.aliases && \
   echo "source ~/.aliases" >> /root/.bashrc && \
-  ./asset/create-user john 1000 doe 1000 && \
+  /root/create-user john 1000 doe 1000 && \
   /root/create-user redis 4201 redis 4201  && \
   /root/create-user elasticsearch 4202 elasticsearch 4202 && \
   /root/create-user mongodb 4203 mongodb 4203 && \
